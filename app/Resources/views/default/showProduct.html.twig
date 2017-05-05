@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+ {% block body %}
+
+     <table class="table">
+
+         <thead>
+         <tr>
+             <th>Reference</th>
+             <th>name</th>
+             <th>Purchasing_Price</th>
+             <th>Rate_Price</th>
+             <th>TVA_Taxe</th>
+
+         </tr>
+         </thead>
+         <tbody>
+
+             <tr>
+                 <td>{{ product.reference}}</td>
+                 <td>{{ product.name}}</td>
+                 <td>{{ product.purcharsingPrice}}</td>
+                 <td>{{ product.ratePrice}}</td>
+                 <td>{{ product.tvaTaxe}}</td>
+
+             </tr>
+
+         </tbody>
+     </table>
+     {% if product.stock is null or product.stock == false %}
+    <a href="{{ path('addInStock',{'id':product.id}) }}"> ajouter au stock</a>
+     {% endif %}
+
+     {% if product.stock ==true %}
+        <p> le produit est en stock</p>
+        <a href="{{ path('deleteInStock',{'id':product.id}) }}"> Delete product </a>
+     {% endif %}
+ {% endblock %}

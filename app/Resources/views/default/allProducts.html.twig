@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+ {% block body %}
+
+     <table class="table">
+
+         <thead>
+         <tr>
+             <th>Reference</th>
+             <th>name</th>
+             <th>Purchasing_Price</th>
+             <th>Rate_Price</th>
+             <th>TVA_Taxe</th>
+
+         </tr>
+         </thead>
+         <tbody>
+         {% for product in products %}
+             <tr>
+                 <td>{{ product.reference}}</td>
+                 <td>{{ product.name}}</td>
+                 <td>{{ product.purcharsingPrice}}</td>
+                 <td>{{ product.ratePrice}}</td>
+                 <td>{{ product.tvaTaxe}}</td>
+                 <td> <a href="{{ path('detailProduct',{id: product.id}) }}"> Detail</a></td>
+             </tr>
+         {% endfor %}
+         </tbody>
+     </table>
+
+ {% endblock %}
